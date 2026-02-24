@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-neon-purple: #a855f7;
+  --color-neon-cyan: #22d3ee;
+}
+
+@keyframes text-gradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+@keyframes title-glow {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.2)) drop-shadow(0 0 25px rgba(34, 211, 238, 0.15)); }
+  50% { filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.4)) drop-shadow(0 0 45px rgba(34, 211, 238, 0.3)); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(2%, 2%) scale(1.05); }
+  66% { transform: translate(-2%, 1%) scale(0.95); }
+}
+
+.animate-text-gradient {
+  background-image: linear-gradient(
+    to right,
+    #a855f7,
+    #ffffff,
+    #22d3ee,
+    #ffffff,
+    #a855f7
+  ) !important;
+  background-size: 300% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  animation: text-gradient 8s linear infinite;
+  display: inline-block;
+}
+
+.animate-hero-title {
+  animation: text-gradient 8s linear infinite, title-glow 4s ease-in-out infinite !important;
+}
+
+.animate-title-glow {
+  animation: title-glow 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 10s ease-in-out infinite;
+}
+
+@utility liquid-glass {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+}
+
+@utility liquid-glass-hover {
+  @apply hover:bg-white/10 hover:border-white/20 transition-all duration-300;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-black text-white antialiased selection:bg-white selection:text-black overflow-x-hidden;
+  font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.15) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
